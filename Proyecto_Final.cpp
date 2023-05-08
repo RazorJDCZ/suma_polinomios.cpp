@@ -1,5 +1,7 @@
-#include<iostream>;
-#include<vector>;
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm> // Necesario para usar la función sort()
 
 using namespace std;
 
