@@ -160,6 +160,9 @@ vector<string> terminos = separar_terminos(pol_cs);
 
 //se llama a la funcion "ordena_exponentes_y_coeficientes"
 vector<vector<double>>coeficientes = ordena_exponentes_y_coeficientes(terminos);
+
+//se llama a la funcion "suma_coeficientes"
+vector<vector<double>> vec_coefi_sumados = suma_coeficientes(coeficientes);
  
 
 	return 0;
