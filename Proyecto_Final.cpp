@@ -46,6 +46,12 @@ for(int i=0; i<n; i++){
 //se llama a la funcion que quita los espacios a la cadena "polinomio"
 polinomio_sin_es = limpiar_espacios(polinomio);
 polinomios.push_back(polinomio_sin_es);
+	
+//se llama a la funcion "polinomio_con_signo"
+for(string polinomio : polinomios){
+	string polinomio_csp = polinomio_con_signo(polinomio); //polinomio_csp = polinomio con signo  
+	pol_cs.push_back(polinomio_csp);
+}
 
 }return 0;
           
