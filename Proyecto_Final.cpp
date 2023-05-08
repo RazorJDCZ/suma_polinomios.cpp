@@ -50,6 +50,17 @@ vector<string> separar_terminos(const string& polinomio) {
     return terminos;
 }
 
+vector<string> separar_terminos(const vector<string>& pol_cs) {
+    vector<string> terminos;
+
+    for (string polinomio : pol_cs) {
+        vector<string> terminos_polinomio = separar_terminos(polinomio);
+        terminos.insert(terminos.end(), terminos_polinomio.begin(), terminos_polinomio.end());
+    }
+
+    return terminos;
+}
+
 int main(){
 
   int n;
