@@ -31,6 +31,10 @@ string polinomio, polinomio_sin_es;
 for(int i=0; i<n; i++){
 	cout<<"     Ingresa el polinomio "<<i+1<<" : ";
         getline (cin, polinomio);
+}
+//se llama a la funcion que quita los espacios a la cadena "polinomio"
+polinomio_sin_es = limpiar_espacios(polinomio);
+polinomios.push_back(polinomio_sin_es);
 
 }return 0;
           
