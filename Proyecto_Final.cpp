@@ -201,6 +201,9 @@ vector<vector<double>>coeficientes = ordena_exponentes_y_coeficientes(terminos);
 //se llama a la funcion "suma_coeficientes"
 vector<vector<double>> vec_coefi_sumados = suma_coeficientes(coeficientes);
  
+ //Se llama a la funcion "resultado"
+cout<<endl<<"El resultado es: ";
+resultado(vec_coefi_sumados);
 
 	return 0;
 }
