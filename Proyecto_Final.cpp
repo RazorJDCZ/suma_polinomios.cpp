@@ -41,6 +41,14 @@ vector<string> separar_terminos(const string& polinomio) {
             termino_actual += c;
         }
     }
+    
+    if (!termino_actual.empty()) {
+        termino_actual = signo_actual + termino_actual;
+        terminos.push_back(termino_actual);
+    }
+
+    return terminos;
+}
 
 int main(){
 
