@@ -13,6 +13,17 @@ string limpiar_espacios(string polinomio){
     return polinomio_sin_es;
 }
 
+string polinomio_con_signo (string polinomio){
+    string polinomio_con_signo;
+    if ((polinomio[0] != '+') && (polinomio[0] != '-')){
+        char signo_a_insertar = '+';
+        polinomio_con_signo = signo_a_insertar + polinomio;
+    } else {
+        polinomio_con_signo = polinomio;
+    }
+    return polinomio_con_signo;
+}
+
 int main(){
 
   int n;
