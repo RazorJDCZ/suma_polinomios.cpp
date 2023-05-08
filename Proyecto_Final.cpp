@@ -79,10 +79,7 @@ vector<vector<double>> ordena_exponentes_y_coeficientes (vector<string> terminos
             exponente = stod(termino.substr(exponente_pos + 1));
         }
         
-  		cout<<termino[0]<<endl;
         coeficiente_del_term = (stod(termino.substr(0, termino.find("*"))));
-    	cout<< coeficiente_del_term<<endl;
-    	//encontrar forma de aumentarle ls signos positivos
 	
         bool exponente_encontrado = false;
         
@@ -164,8 +161,9 @@ void resultado(vector<vector<double>> vec_coefi_sumados){
 }
 
 int main(){
-
+	
   int n;
+  vector<string>pol_cs; //pol_cs =  vector de polinomios con signo
   
 cout<<"Ingresa la cantidad de polinomios a sumar: ";
 cin>>n;
@@ -181,10 +179,10 @@ string polinomio, polinomio_sin_es;
 for(int i=0; i<n; i++){
 	cout<<"     Ingresa el polinomio "<<i+1<<" : ";
         getline (cin, polinomio);
-}
 //se llama a la funcion que quita los espacios a la cadena "polinomio"
 polinomio_sin_es = limpiar_espacios(polinomio);
 polinomios.push_back(polinomio_sin_es);
+}
 	
 //se llama a la funcion "polinomio_con_signo"
 for(string polinomio : polinomios){
