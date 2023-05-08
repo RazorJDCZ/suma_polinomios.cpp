@@ -24,6 +24,24 @@ string polinomio_con_signo (string polinomio){
     return polinomio_con_signo;
 }
 
+vector<string> separar_terminos(const string& polinomio) {
+    vector<string> terminos;
+    string termino_actual = "";
+    char signo_actual = '+';
+
+    for (char c : polinomio) {
+        if (c == '+' || c == '-') {
+            if (!termino_actual.empty()) {
+                termino_actual = signo_actual + termino_actual;
+                terminos.push_back(termino_actual);
+            }
+            signo_actual = c;
+            termino_actual = "";
+        } else {
+            termino_actual += c;
+        }
+    }
+
 int main(){
 
   int n;
@@ -52,6 +70,8 @@ for(string polinomio : polinomios){
 	string polinomio_csp = polinomio_con_signo(polinomio); //polinomio_csp = polinomio con signo  
 	pol_cs.push_back(polinomio_csp);
 }
+ 
 
-}return 0;
+	return 0;
+}
           
