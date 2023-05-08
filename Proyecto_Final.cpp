@@ -61,6 +61,56 @@ vector<string> separar_terminos(const vector<string>& pol_cs) {
     return terminos;
 }
 
+vector<vector<double>> ordena_exponentes_y_coeficientes (vector<string> terminos){
+    vector<vector<double>> coeficientes;
+    double exponente, coeficiente_del_term;
+
+    for (string termino : terminos) {
+        size_t exponente_pos = termino.find("x");
+        // Obtener la dirección de memoria del último carácter de termino
+        char* ultimo_caracter = &termino[termino.length() - 1];
+        // Verificar si exponente_pos es igual a la dirección de memoria del último carácter
+        if (&termino[exponente_pos] == ultimo_caracter) {
+            // exponente_pos es igual a la posición del último carácter de termino
+            exponente = 1;
+        } else if (exponente_pos == string::npos) {
+            exponente = 0;
+        } else {
+            exponente = stod(termino.substr(exponente_pos + 1));
+        }
+        
+  		cout<<termino[0]<<endl;
+        coeficiente_del_term = (stod(termino.substr(0, termino.find("*"))));
+    	cout<< coeficiente_del_term<<endl;
+    	//encontrar forma de aumentarle ls signos positivos
+	
+        bool exponente_encontrado = false;
+        
+
+        // Buscar si ya existe un vector en coeficientes con el exponente actual
+        for (int i = 0; i < coeficientes.size(); i++) {
+            if (exponente == coeficientes[i][0]) {
+                exponente_encontrado = true;
+                coeficientes[i].push_back(coeficiente_del_term);
+                break;
+            }
+        }
+
+        // Si no existe, agregar un nuevo vector con el exponente y el coeficiente actual
+        if (!exponente_encontrado) {
+            vector<double> coeficiente = {exponente, coeficiente_del_term};
+            coeficientes.push_back(coeficiente);
+        }
+    }
+    
+    // Ordenar de mayor a menor los vectores dependiendo de los exponentes, es decir, la coef[0] de cada vector.
+    sort(coeficientes.begin(), coeficientes.end(), [](const vector<double>& a, const vector<double>& b) {
+    	return a[0] > b[0];
+	});
+
+    return coeficientes;
+}
+
 int main(){
 
   int n;
@@ -89,6 +139,9 @@ for(string polinomio : polinomios){
 	string polinomio_csp = polinomio_con_signo(polinomio); //polinomio_csp = polinomio con signo  
 	pol_cs.push_back(polinomio_csp);
 }
+
+//se llama a la funcion "separar_terminos" (para vectores)
+vector<string> terminos = separar_terminos(pol_cs);
  
 
 	return 0;
