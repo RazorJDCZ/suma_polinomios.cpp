@@ -200,10 +200,15 @@ vector<vector<double>>coeficientes = ordena_exponentes_y_coeficientes(terminos);
 
 //se llama a la funcion "suma_coeficientes"
 vector<vector<double>> vec_coefi_sumados = suma_coeficientes(coeficientes);
- 
+
+//se define al grado del polinomio
+ double grado = coeficientes[0][0];
+ cout<<endl<<"El grado del polinomio sumado es: "<<grado;
+    
  //Se llama a la funcion "resultado"
-cout<<endl<<"El resultado es: ";
+cout<<endl<<"El polinomio sumado es: ";
 resultado(vec_coefi_sumados);
+
 
 	return 0;
 }
