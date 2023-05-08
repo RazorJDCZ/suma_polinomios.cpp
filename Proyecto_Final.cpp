@@ -111,6 +111,21 @@ vector<vector<double>> ordena_exponentes_y_coeficientes (vector<string> terminos
     return coeficientes;
 }
 
+vector<vector<double>> suma_coeficientes(vector<vector<double>> coeficientes) {
+    vector<vector<double>> vec_coefi_sumados;
+    for (vector<double> coeficiente : coeficientes) {
+        double suma = 0;
+        for (int i = 1; i < coeficiente.size(); i++) {
+            suma += coeficiente[i];
+        }
+        vector<double> coeficiente_sumado;
+        coeficiente_sumado.push_back(coeficiente[0]);
+        coeficiente_sumado.push_back(suma);
+        vec_coefi_sumados.push_back(coeficiente_sumado);
+    }
+    return vec_coefi_sumados;
+}
+
 int main(){
 
   int n;
@@ -142,6 +157,9 @@ for(string polinomio : polinomios){
 
 //se llama a la funcion "separar_terminos" (para vectores)
 vector<string> terminos = separar_terminos(pol_cs);
+
+//se llama a la funcion "ordena_exponentes_y_coeficientes"
+vector<vector<double>>coeficientes = ordena_exponentes_y_coeficientes(terminos);
  
 
 	return 0;
