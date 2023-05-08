@@ -125,6 +125,43 @@ vector<vector<double>> suma_coeficientes(vector<vector<double>> coeficientes) {
     }
     return vec_coefi_sumados;
 }
+void resultado(vector<vector<double>> vec_coefi_sumados){
+	for(vector<double>coefi : vec_coefi_sumados){
+		if(coefi[1]!= 0){
+			if(coefi[0] == 0){
+			string coef_string = to_string(coefi[1]);
+			if(coef_string[0] != '-'){
+				if(coefi[1]!= 0){
+					cout<<"+"<<coefi[1];
+				}
+				
+			}else {
+				if(coefi[1]!= 0){
+					cout<<coefi[1];
+				}
+			}
+			}else if(coefi[0]== 1){
+				string coef_string = to_string(coefi[1]);
+				if(coef_string[0] != '-'){
+					if(coefi[1]!= 0){
+						cout<<"+"<<coefi[1]<<"*x";
+					}
+					
+				}else {
+					cout<<coefi[1]<<"*x";
+				}
+			}else{
+				string coef_string = to_string(coefi[1]);
+				if(coef_string[0] != '-'){
+					cout<<"+"<<coefi[1]<<"*x"<<coefi[0];
+				}else {
+					cout<<coefi[1]<<"*x"<<coefi[0];
+				}
+			}
+		}
+		
+	}
+}
 
 int main(){
 
