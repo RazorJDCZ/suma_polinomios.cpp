@@ -185,6 +185,21 @@ bool revisarSignosSeguidos(string polinomio){
 	return false;
 }
 
+bool revisarNumVariables(string polinomio, char variable = 'x'){
+	for(char caracter:polinomio){
+		if(isdigit(caracter)){
+			continue;
+		} else if(caracter == '*' or caracter == '+' or caracter == '-'){
+			continue;
+		}
+		else if(isalpha(caracter)){
+			if(caracter != variable){
+				cout << "Por favor, el polinomio solo debe contener una variable, por defecto x." << endl << endl;
+				return true;
+			}
+		}
+	}
+	return false;
 
 int main(){
 	
