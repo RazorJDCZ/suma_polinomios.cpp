@@ -162,6 +162,30 @@ void resultado(vector<vector<double>> vec_coefi_sumados){
 	}
 }
 
+bool revisarSignosSeguidos(string polinomio){
+	char buffer = ' ';
+	for(char caracter:polinomio){
+		if(isdigit(caracter) or isalpha(caracter)){
+			buffer = ' ';
+			continue;
+		} 
+		else if (caracter==' '){
+			continue;
+		}
+		else {
+			if(buffer == ' '){
+				buffer = caracter;
+				continue;
+			}
+			
+			cout << "Por favor, el polinomio no debe contener dos signos juntos." << endl << endl;
+			return true;
+		} 
+	}
+	return false;
+}
+
+
 int main(){
 	
   int n;
