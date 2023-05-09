@@ -200,6 +200,28 @@ bool revisarNumVariables(string polinomio, char variable = 'x'){
 		}
 	}
 	return false;
+	
+bool revisarAlphaNum(string polinomio){
+	for(char caracter:polinomio){
+		if(isdigit(caracter)){
+			continue;
+		}
+		else if(isalpha(caracter)){
+			continue;
+		}
+		else {
+			if (caracter == '*' or caracter == '+' or caracter == '-' or caracter == ' '){
+				continue;
+			}
+			
+			else{
+				cout << "No usar caracteres alpha numericos diferentes que: '*', '+' y '-'" << endl << endl;
+				return true;
+			}
+			}
+		}
+	return false;
+	}
 
 int main(){
 	
