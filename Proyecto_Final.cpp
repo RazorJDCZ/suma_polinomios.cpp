@@ -240,8 +240,12 @@ if (n < 2){
 vector<string>polinomios;
 string polinomio, polinomio_sin_es;
 for(int i=0; i<n; i++){
-	cout<<"     Ingresa el polinomio "<<i+1<<" : ";
-        getline (cin, polinomio);
+    	do{
+        cout<<"     Ingresa el polinomio "<<i+1<<" : ";
+        getline(cin, polinomio);
+    	}
+	//Se revisa si hay signos seguidos, caracteres alpha numericos o la variable es x
+	while( revisarNumVariables(polinomio) or revisarSignosSeguidos(polinomio) or revisarAlphaNum(polinomio));
 //se llama a la funcion que quita los espacios a la cadena "polinomio"
 polinomio_sin_es = limpiar_espacios(polinomio);
 polinomios.push_back(polinomio_sin_es);
