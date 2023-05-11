@@ -197,6 +197,29 @@ bool revisarIfInt(string polinomio){
 	return true;
 }
 
+bool revisarEspacios (string polinomio){
+	bool num_seguido_espacio = true;
+	for(char caracter:polinomio){
+		if(isdigit(caracter) or isalpha(caracter) or caracter == '*' or caracter == '+' or caracter == '-' or caracter =='.'){
+			num_seguido_espacio=true;
+			continue;
+		} 
+		else if (caracter=='/n'){
+			num_seguido_espacio=true;
+			continue;
+		}
+		else {
+			if(num_seguido_espacio=false){
+				continue;
+			}
+			
+			cout << "Por favor, no escribir un numero despues de un espacio." << endl << endl;
+			return true;
+		} 
+	}
+	return false;
+}
+
 bool revisarNumVariables(string polinomio, char variable = 'x'){
 	for(char caracter:polinomio){
 		if(isdigit(caracter)){
@@ -272,7 +295,7 @@ for(int i=0; i<n; i++){
         getline(cin, polinomio);
     	}
 	//Se revisa si hay signos seguidos, caracteres alpha numericos o la variable es x
-	while( revisarNumVariables(polinomio) or revisarSignosSeguidos(polinomio) or revisarAlphaNum(polinomio));
+	while( revisarNumVariables(polinomio) or revisarSignosSeguidos(polinomio) or revisarAlphaNum(polinomio) or revisarEspacios(polinomio));
 //se llama a la funcion que quita los espacios a la cadena "polinomio"
 polinomio_sin_es = limpiar_espacios(polinomio);
 polinomios.push_back(polinomio_sin_es);
