@@ -318,6 +318,9 @@ for(string polinomio : polinomios){
 
 //se llama a la funcion "separar_terminos" (para vectores)
 vector<string> terminos = separar_terminos(pol_cs);
+	
+//se llama a la funcion "elimina_termino" que revisa si hay un 0*x y lo elimina del programa
+elimina_termino(terminos);
 
 //se llama a la funcion "ordena_exponentes_y_coeficientes"
 vector<vector<double>>coeficientes = ordena_exponentes_y_coeficientes(terminos);
