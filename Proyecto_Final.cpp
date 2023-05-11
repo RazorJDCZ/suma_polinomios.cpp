@@ -185,6 +185,18 @@ bool revisarSignosSeguidos(string polinomio){
 	return false;
 }
 
+bool revisarIfInt(string polinomio){
+	for(char caracter:polinomio){
+		if(isdigit(caracter)){
+			continue;
+		} 
+		else {
+			return false;
+		}
+	}
+	return true;
+}
+
 bool revisarNumVariables(string polinomio, char variable = 'x'){
 	for(char caracter:polinomio){
 		if(isdigit(caracter)){
@@ -225,8 +237,23 @@ bool revisarAlphaNum(string polinomio){
 
 int main(){
 	
-  int n;
-  vector<string>pol_cs; //pol_cs =  vector de polinomios con signo
+ int n;
+string n_input;
+vector<string>pol_cs; //pol_cs =  vector de polinomios con signo
+	
+while(true){
+	cout<<"Ingresa la cantidad de polinomios a sumar: ";
+	cin>>n_input;
+	cin.ignore();
+	if(stoi(n_input) < 2 or revisarIfInt(n_input) == false){
+		cout << endl << "Valor no permitido. Usa un valor entero igual o mayor a 2" << endl << endl;
+		continue;
+	}
+	else{
+		n = stoi(n_input);
+		break;
+	}
+	}
   
 cout<<"Ingresa la cantidad de polinomios a sumar: ";
 cin>>n;
