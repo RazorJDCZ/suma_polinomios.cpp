@@ -201,7 +201,7 @@ bool revisarNumVariables(string polinomio, char variable = 'x'){
 	for(char caracter:polinomio){
 		if(isdigit(caracter)){
 			continue;
-		} else if(caracter == '*' or caracter == '+' or caracter == '-'){
+		} else if(caracter == '*' or caracter == '+' or caracter == '-' or caracter =='.'){
 			continue;
 		}
 		else if(isalpha(caracter)){
@@ -222,7 +222,7 @@ bool revisarAlphaNum(string polinomio){
 			continue;
 		}
 		else {
-			if (caracter == '*' or caracter == '+' or caracter == '-' or caracter == ' '){
+			if (caracter == '*' or caracter == '+' or caracter == '-' or caracter == ' ' or caracter =='.'){
 				continue;
 			}
 			
