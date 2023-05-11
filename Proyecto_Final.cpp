@@ -63,6 +63,15 @@ vector<string> separar_terminos(const vector<string>& pol_cs) {
     return terminos;
 }
 
+void elimina_termino(vector<string>& terminos) {
+    for (auto it = terminos.begin(); it != terminos.end(); ++it) {
+        if (it->find("0*x") != string::npos) {
+            it = terminos.erase(it);
+            --it;
+        }
+    }
+}
+
 vector<vector<double>> ordena_exponentes_y_coeficientes (vector<string> terminos){
     vector<vector<double>> coeficientes;
     double exponente, coeficiente_del_term;
