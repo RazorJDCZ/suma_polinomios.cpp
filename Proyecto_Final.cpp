@@ -322,6 +322,7 @@ int main(){
  int n;
 string n_input;
 vector<string>pol_cs; //pol_cs =  vector de polinomios con signo
+cout<<endl<<"     * * * * * SUMA DE POLINOMIOS * * * * * "<<endl<<endl;
 	
 while(true){
 	cout<<"Ingresa la cantidad de polinomios a sumar: ";
