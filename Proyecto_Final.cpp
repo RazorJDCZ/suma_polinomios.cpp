@@ -206,6 +206,28 @@ bool revisarIfInt(string polinomio){
 	return true;
 }
 
+bool validar_asteriscos(string polinomio){
+	int astrsc = 0;
+	for(char c: polinomio){
+		if(c == '+' || c== '-'){
+			size_t pos = polinomio.find(c);
+			string sub = polinomio.substr(0, pos);
+			polinomio = polinomio.substr(pos + 1);
+			for(char c: sub){
+				if(c == '*'){
+					astrsc ++;
+				}
+			}
+			if (astrsc > 1){
+				cout<<"     No se permite ingresar más de un '*' dentro de un mismo termino. Por favor vuelva a ingresar el polinomio."<<endl<<endl<<endl;
+				return true;
+			}
+			astrsc = 0;
+		}
+	}
+	return false;
+}
+
 bool revisarEspacios(string polinomio) {
     bool espacioEntreNumeros = false;
     bool hayOperador = false;
