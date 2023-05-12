@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <algorithm> // Necesario para usar la función sort()
+#include <cstdlib> // limpiar consola
 
 using namespace std;
 
@@ -186,8 +187,8 @@ bool revisarSignosSeguidos(string polinomio){
 				buffer = caracter;
 				continue;
 			}
-			
-			cout << "Por favor, el polinomio no debe contener dos signos juntos." << endl << endl;
+			system("cls");
+			cout << endl<<"     El polinomio no debe contener dos signos juntos. Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
 			return true;
 		} 
 	}
@@ -219,6 +220,7 @@ bool validar_asteriscos(string polinomio){
 				}
 			}
 			if (astrsc > 1){
+				system("cls");
 				cout<<"     No se permite ingresar más de un '*' dentro de un mismo termino. Por favor vuelva a ingresar el polinomio."<<endl<<endl<<endl;
 				return true;
 			}
@@ -246,7 +248,8 @@ bool revisarEspacios(string polinomio) {
     }
 
     if (espacioEntreNumeros) {
-        cout << "Por favor, no ingresar un numero separado por un espacio." << endl << endl;
+	system("cls");
+        cout <<endl<< "     No se permite ingresar un numero separado por un espacio. Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
         return true;
     }
 
@@ -262,7 +265,8 @@ bool revisarNumerosDespuesDeAsterisco(string polinomio) {
 
     	if(caracter =='*'){
     		if(isdigit(polinomio[i+1])){
-    			cout << endl << "No se permite colocar un numero despues de un asterisco ('*')." << endl;
+			system("cls");
+    			cout << endl << "     No se permite colocar un numero despues de un asterisco ('*').Vuelve a ingresar el polinomio por favor." << endl<<endl<<endl;
                 return true;
 			}
 		}
@@ -280,7 +284,8 @@ bool revisarNumVariables(string polinomio, char variable = 'x'){
 		}
 		else if(isalpha(caracter)){
 			if(caracter != variable){
-				cout << "Por favor, el polinomio solo debe contener una variable, por defecto x." << endl << endl;
+				system("cls");
+				cout << "     El polinomio solo debe contener una variable, por defecto x minuscula. Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
 				return true;
 			}
 		}
@@ -302,7 +307,9 @@ bool revisarAlphaNum(string polinomio){
 			}
 			
 			else{
-				cout << "No usar caracteres alpha numericos diferentes que: '*', '+' y '-'" << endl << endl;
+				system("cls");
+				cout << "     No se permite usar caracteres alpha numericos diferentes que: '*', '+' y '-'.";
+				cout<<endl<<"     Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
 				return true;
 			}
 			}
@@ -321,7 +328,8 @@ while(true){
 	cin>>n_input;
 	cin.ignore();
 	if(stoi(n_input) < 2 or revisarIfInt(n_input) == false){
-		cout << endl << "Valor no permitido. Usa un valor entero igual o mayor a 2" << endl << endl;
+		system("cls");
+		cout << endl << "     Valor no permitido. Usa un valor entero igual o mayor a 2" << endl << endl;
 		continue;
 	}
 	else{
@@ -364,13 +372,11 @@ vector<vector<double>> vec_coefi_sumados = suma_coeficientes(coeficientes);
 
 //se define al grado del polinomio
  double grado = coeficientes[0][0];
- cout<<endl<<"El grado del polinomio sumado es: "<<grado;
-    
- //Se llama a la funcion "resultado"
-cout<<endl<<"El polinomio sumado es: ";
+system("cls");
+cout<<endl<<"     * * * * * //R E S U L T A D O S// * * * * * "<<endl<<endl;
+cout<<endl<<"     El grado del polinomio sumado es: "<<grado;
 resultado(vec_coefi_sumados);
-
-
+	
 	return 0;
 }
           
