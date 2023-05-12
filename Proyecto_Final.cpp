@@ -285,7 +285,7 @@ bool revisarNumVariables(string polinomio, char variable = 'x'){
 		else if(isalpha(caracter)){
 			if(caracter != variable){
 				system("cls");
-				cout << "     El polinomio solo debe contener una variable, por defecto x minuscula. Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
+				cout << "     El polinomio solo debe contener una variable, por defecto x (minuscula). Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
 				return true;
 			}
 		}
@@ -375,7 +375,11 @@ vector<vector<double>> vec_coefi_sumados = suma_coeficientes(coeficientes);
  double grado = coeficientes[0][0];
 system("cls");
 cout<<endl<<"     * * * * * //R E S U L T A D O S// * * * * * "<<endl<<endl;
-cout<<endl<<"     El grado del polinomio sumado es: "<<grado;
+ 
+ cout<<endl<<"     El grado del polinomio sumado es: "<<grado;
+    
+ //Se llama a la funcion "resultado"
+cout<<endl<<"     El polinomio sumado es: ";
 resultado(vec_coefi_sumados);
 	
 	return 0;
