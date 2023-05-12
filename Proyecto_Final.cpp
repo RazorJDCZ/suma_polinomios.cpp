@@ -231,6 +231,24 @@ bool revisarEspacios(string polinomio) {
     return false;
 }
 
+bool revisarNumerosDespuesDeAsterisco(string polinomio) {
+    bool asteriscoEncontrado = false;
+    bool hayNumeroDespuesDeAsterisco = false;
+ 
+    for(int i=0; i<polinomio.size();++i){
+    	char caracter = polinomio[i];
+
+    	if(caracter =='*'){
+    		if(isdigit(polinomio[i+1])){
+    			cout << endl << "No se permite colocar un numero despues de un asterisco ('*')." << endl;
+                return true;
+			}
+		}
+	}
+
+    return false;
+}
+
 bool revisarNumVariables(string polinomio, char variable = 'x'){
 	for(char caracter:polinomio){
 		if(isdigit(caracter)){
