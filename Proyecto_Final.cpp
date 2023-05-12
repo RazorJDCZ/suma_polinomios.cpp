@@ -206,27 +206,29 @@ bool revisarIfInt(string polinomio){
 	return true;
 }
 
-bool revisarEspacios (string polinomio){
-	bool num_seguido_espacio = true;
-	for(char caracter:polinomio){
-		if(isdigit(caracter) or isalpha(caracter) or caracter == '*' or caracter == '+' or caracter == '-' or caracter =='.'){
-			num_seguido_espacio=true;
-			continue;
-		} 
-		else if (caracter=='/n'){
-			num_seguido_espacio=true;
-			continue;
-		}
-		else {
-			if(num_seguido_espacio=false){
-				continue;
-			}
-			
-			cout << "Por favor, no escribir un numero despues de un espacio." << endl << endl;
-			return true;
-		} 
-	}
-	return false;
+bool revisarEspacios(string polinomio) {
+    bool espacioEntreNumeros = false;
+    bool hayOperador = false;
+
+    for (int i = 0; i < polinomio.size(); i++) {
+        char caracter = polinomio[i];
+
+        if (isdigit(caracter) or isalpha(caracter)) {
+            if (i > 0 and polinomio[i+1] == ' ' and !hayOperador) {
+                espacioEntreNumeros = true;
+                break;
+            }
+        } else if (caracter == '+' or caracter == '-' or caracter == '*') {
+            hayOperador = true;
+        }
+    }
+
+    if (espacioEntreNumeros) {
+        cout << "Por favor, no ingresar un numero separado por un espacio." << endl << endl;
+        return true;
+    }
+
+    return false;
 }
 
 bool revisarNumVariables(string polinomio, char variable = 'x'){
