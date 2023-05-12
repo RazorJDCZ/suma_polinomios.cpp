@@ -338,7 +338,7 @@ for(int i=0; i<n; i++){
         getline(cin, polinomio);
     	}
 	//Se revisa si hay signos seguidos, caracteres alpha numericos o la variable es x
-	while( revisarNumVariables(polinomio) or revisarSignosSeguidos(polinomio) or revisarAlphaNum(polinomio) or revisarEspacios(polinomio) or revisarNumerosDespuesDeAsterisco(polinomio));
+	while( revisarNumVariables(polinomio) or revisarSignosSeguidos(polinomio) or revisarAlphaNum(polinomio) or revisarEspacios(polinomio) or revisarNumerosDespuesDeAsterisco(polinomio) or validar_asteriscos(polinomio));
 //se llama a la funcion que quita los espacios a la cadena "polinomio"
 polinomio_sin_es = limpiar_espacios(polinomio);
 polinomios.push_back(polinomio_sin_es);
