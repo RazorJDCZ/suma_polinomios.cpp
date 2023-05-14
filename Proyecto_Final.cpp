@@ -208,26 +208,38 @@ bool revisarIfInt(string polinomio){
 }
 
 bool validar_asteriscos(string polinomio){
-	int astrsc = 0;
-	for(char c: polinomio){
-		if(c == '+' || c== '-'){
-			size_t pos = polinomio.find(c);
-			string sub = polinomio.substr(0, pos);
-			polinomio = polinomio.substr(pos + 1);
-			for(char c: sub){
-				if(c == '*'){
-					astrsc ++;
-				}
-			}
-			if (astrsc > 1){
-				system("cls");
-				cout<<"     No se permite ingresar más de un '*' dentro de un mismo termino. Por favor vuelva a ingresar el polinomio."<<endl<<endl<<endl;
-				return true;
-			}
-			astrsc = 0;
-		}
-	}
-	return false;
+    int astrsc = 0;
+    size_t pos;
+    string sub;
+    for(char c: polinomio){
+        if(c == '+' || c== '-'){
+            pos = polinomio.find(c);
+            sub = polinomio.substr(0, pos);
+            polinomio = polinomio.substr(pos + 1);
+            for(char c: sub){
+                if(c == '*'){
+                    astrsc ++;
+                }
+            }
+            if (astrsc > 1){
+                system("cls");
+                cout<<"     No se permite ingresar mas de un '*' dentro de un mismo termino. Por favor vuelva a ingresar el polinomio."<<endl<<endl<<endl;
+                return true;
+            }
+            astrsc = 0;
+        }
+    }
+    for(char c: polinomio){
+        if(c == '*'){
+            astrsc ++;
+        }
+    }
+    if (astrsc > 1){
+        system("cls");
+        cout<<"     No se permite ingresar mas de un '*' dentro de un mismo termino. Por favor vuelva a ingresar el polinomio."<<endl<<endl<<endl;
+        return true;
+    }
+    return false;
 }
 
 bool revisarEspacios(string polinomio) {
