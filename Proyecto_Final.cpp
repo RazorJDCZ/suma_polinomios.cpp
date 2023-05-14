@@ -187,7 +187,6 @@ bool revisarSignosSeguidos(string polinomio){
 				buffer = caracter;
 				continue;
 			}
-			system("cls");
 			cout << endl<<"     El polinomio no debe contener dos signos juntos. Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
 			return true;
 		} 
@@ -222,7 +221,6 @@ bool validar_asteriscos(string polinomio){
                 }
             }
             if (astrsc > 1){
-                system("cls");
                 cout<<"     No se permite ingresar mas de un '*' dentro de un mismo termino. Por favor vuelva a ingresar el polinomio."<<endl<<endl<<endl;
                 return true;
             }
@@ -235,7 +233,6 @@ bool validar_asteriscos(string polinomio){
         }
     }
     if (astrsc > 1){
-        system("cls");
         cout<<"     No se permite ingresar mas de un '*' dentro de un mismo termino. Por favor vuelva a ingresar el polinomio."<<endl<<endl<<endl;
         return true;
     }
@@ -260,7 +257,6 @@ bool revisarEspacios(string polinomio) {
     }
 
     if (espacioEntreNumeros) {
-	system("cls");
         cout <<endl<< "     No se permite ingresar un numero separado por un espacio. Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
         return true;
     }
@@ -277,7 +273,6 @@ bool revisarNumerosDespuesDeAsterisco(string polinomio) {
 
     	if(caracter =='*'){
     		if(isdigit(polinomio[i+1])){
-			system("cls");
     			cout << endl << "     No se permite colocar un numero despues de un asterisco ('*').Vuelve a ingresar el polinomio por favor." << endl<<endl<<endl;
                 return true;
 			}
@@ -296,7 +291,6 @@ bool revisarNumVariables(string polinomio, char variable = 'x'){
 		}
 		else if(isalpha(caracter)){
 			if(caracter != variable){
-				system("cls");
 				cout << "     El polinomio solo debe contener una variable, por defecto x (minuscula). Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
 				return true;
 			}
@@ -319,7 +313,6 @@ bool revisarAlphaNum(string polinomio){
 			}
 			
 			else{
-				system("cls");
 				cout << "     No se permite usar caracteres alpha numericos diferentes que: '*', '+' y '-'.";
 				cout<<endl<<"     Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
 				return true;
@@ -408,10 +401,10 @@ vector<vector<double>> vec_coefi_sumados = suma_coeficientes(coeficientes);
 
 //se define al grado del polinomio
  double grado = coeficientes[0][0];
+	
+system("cls");
 cout<<endl<<"     * * * * * //R E S U L T A D O S// * * * * * "<<endl<<endl;
- 
  cout<<endl<<"     El grado del polinomio sumado es: "<<grado;
-    
  //Se llama a la funcion "resultado"
 cout<<endl<<"     El polinomio sumado es: ";
 resultado(vec_coefi_sumados);
