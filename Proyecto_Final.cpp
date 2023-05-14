@@ -329,6 +329,22 @@ bool revisarAlphaNum(string polinomio){
 	return false;
 	}
 
+void aumenta_uno(string& polinomio) {
+    size_t i = 0;
+    while (i < polinomio.length()) {
+        if (polinomio[i] == 'x') {
+            if (i == 0) {
+                polinomio.insert(0, "1*");
+                i += 2; // ajustar el índice (i) para omitir el '1*'
+            } else if (polinomio[i-1] == '-' || polinomio[i-1] == '+') {
+                polinomio.insert(i, "1*");
+                i += 2; // ajustar el índice (i) para omitir el '1*'
+            }
+        }
+        i++;
+    }
+}
+
 int main(){
 	
  int n;
