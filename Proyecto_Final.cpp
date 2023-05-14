@@ -359,8 +359,11 @@ while(true){
 	cout<<"Ingresa la cantidad de polinomios a sumar: ";
 	cin>>n_input;
 	cin.ignore();
-	if(stoi(n_input) < 2 or revisarIfInt(n_input) == false){
-		system("cls");
+	if (revisarIfInt(n_input) == false){
+		cout << endl << "     Valor no permitido. Usa un valor entero igual o mayor a 2" << endl << endl;
+		continue;
+	}
+	else if(stoi(n_input) < 2){
 		cout << endl << "     Valor no permitido. Usa un valor entero igual o mayor a 2" << endl << endl;
 		continue;
 	}
@@ -405,7 +408,6 @@ vector<vector<double>> vec_coefi_sumados = suma_coeficientes(coeficientes);
 
 //se define al grado del polinomio
  double grado = coeficientes[0][0];
-system("cls");
 cout<<endl<<"     * * * * * //R E S U L T A D O S// * * * * * "<<endl<<endl;
  
  cout<<endl<<"     El grado del polinomio sumado es: "<<grado;
