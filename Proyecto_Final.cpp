@@ -373,6 +373,7 @@ for(int i=0; i<n; i++){
     	do{
         cout<<"     Ingresa el polinomio "<<i+1<<" : ";
         getline(cin, polinomio);
+	aumenta_uno (polinomio);
     	}
 	//Se revisa si hay signos seguidos, caracteres alpha numericos o la variable es x
 	while( revisarNumVariables(polinomio) or revisarSignosSeguidos(polinomio) or revisarAlphaNum(polinomio) or revisarEspacios(polinomio) or revisarNumerosDespuesDeAsterisco(polinomio) or validar_asteriscos(polinomio));
