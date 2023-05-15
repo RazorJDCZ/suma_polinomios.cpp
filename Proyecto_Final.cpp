@@ -229,7 +229,7 @@ bool validar_asteriscos(string polinomio){
     for(size_t i = 0; i < polinomio.length(); i++){
         char c = polinomio[i];
         if(c == '*' && asteriscos == 1){
-            cout << endl<<"     No se permite ingresar mas de un '*' dentro de un mismo término. Por favor vuelva a ingresar el polinomio." << endl << endl << endl;
+            cout << endl<<"     No se permite ingresar mas de un '*' dentro de un mismo termino. Por favor vuelva a ingresar el polinomio." << endl << endl << endl;
             return true;
         } else if(c == '*') {
             asteriscos++;
@@ -347,20 +347,7 @@ int main(){
  int n, opcion;
 string n_input;
 vector<string>pol_cs; //pol_cs =  vector de polinomios con signo
-do{
-
-        cout<<endl<<endl<<"     * Escoja una de las siguientes opciones *: "<<endl<<endl;
-        cout<<"     1. Sumar polinomios "<<endl;
-        cout<<"     2. Salir "<<endl<<endl;
-        cout<<"     Opcion: ";
-        cin>> opcion;
-        
-        if (opcion == 1){
-        	system("cls");
-		}
-
-        switch (opcion){
-            case 1:{
+	
 		while(true){
 			cout<<endl<<"     * * * * * SUMA DE POLINOMIOS * * * * * "<<endl<<endl;
 			cout<<"   Ingresa la cantidad de polinomios a sumar: ";
@@ -421,26 +408,11 @@ do{
 		for(int i = 0; i< polinomiosPrint.size(); i++){
 			cout<<endl<<"     "<<i+1<<") "<<polinomiosPrint[i];
 		}
-		 cout<<endl<<"     El grado del polinomio sumado es: "<<grado;
+		 cout<<endl<<endl<<"     El grado del polinomio sumado es: "<<grado;
 		 //Se llama a la funcion "resultado"
 		cout<<endl<<"     El polinomio sumado es: ";
 		resultado(vec_coefi_sumados);
-		 break;
-	    }
-            case 2:{
-            	system("cls");
-            	cout<<endl<<endl<<"     El programa ha terminado :) "<<endl;
-                break;
-            }
-
-            default:{
-                cout<<endl<<endl<<"     La opcion que escogiste esta fuera de rango. Por favor escoge una nueva";
-		break;
-	    }
-	}
-	
-	}while (opcion != 2);
-    
+   
     return 0;
 }
 	
