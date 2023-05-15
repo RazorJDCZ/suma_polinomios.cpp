@@ -187,7 +187,7 @@ bool revisarSignosSeguidos(string polinomio){
 				buffer = caracter;
 				continue;
 			}
-			cout << endl<<"     El polinomio no debe contener dos signos juntos. Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
+			cout << endl<<"     El polinomio no debe contener dos operadores juntos. Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
 			return true;
 		} 
 	}
@@ -211,7 +211,7 @@ bool validar_asteriscos(string polinomio){
     for(size_t i = 0; i < polinomio.length(); i++){
         char c = polinomio[i];
         if(c == '*' && asteriscos == 1){
-            cout << endl<<"No se permite ingresar mas de un '*' dentro de un mismo término. Por favor vuelva a ingresar el polinomio." << endl << endl << endl;
+            cout << endl<<"     No se permite ingresar mas de un '*' dentro de un mismo término. Por favor vuelva a ingresar el polinomio." << endl << endl << endl;
             return true;
         } else if(c == '*') {
             asteriscos++;
@@ -274,7 +274,7 @@ bool revisarNumVariables(string polinomio, char variable = 'x'){
 		}
 		else if(isalpha(caracter)){
 			if(caracter != variable){
-				cout << "     El polinomio solo debe contener una variable, por defecto x (minuscula). Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
+				cout << "     El polinomio solo debe contener la variable 'x' (minuscula). Vuelve a ingresar el polinomio por favor." << endl << endl<<endl;
 				return true;
 			}
 		}
@@ -345,15 +345,10 @@ do{
             case 1:{
 		while(true){
 			cout<<endl<<"     * * * * * SUMA DE POLINOMIOS * * * * * "<<endl<<endl;
-			cout<<"Ingresa la cantidad de polinomios a sumar: ";
+			cout<<"   Ingresa la cantidad de polinomios a sumar: ";
 			cin>>n_input;
 			cin.ignore();
-			if (revisarIfInt(n_input) == false){
-				system("cls");
-				cout << endl << "     Valor no permitido. Usa un valor entero igual o mayor a 2" << endl << endl;
-				continue;
-			}
-			else if(stoi(n_input) < 2){
+			if ((revisarIfInt(n_input) == false) or (stoi(n_input) < 2)){
 				system("cls");
 				cout << endl << "     Valor no permitido. Usa un valor entero igual o mayor a 2" << endl << endl;
 				continue;
@@ -365,6 +360,7 @@ do{
 		}
 
 		vector<string>polinomios;
+		vector<string>polinomiosPrint;
 		string polinomio, polinomio_sin_es;
 		for(int i=0; i<n; i++){
 			do{
@@ -377,6 +373,7 @@ do{
 		//se llama a la funcion que quita los espacios a la cadena "polinomio"
 		polinomio_sin_es = limpiar_espacios(polinomio);
 		polinomios.push_back(polinomio_sin_es);
+		polinomiosPrint.push_back(polinomio_sin_es);
 		}
 
 		//se llama a la funcion "polinomio_con_signo"
@@ -402,6 +399,10 @@ do{
 
 		system("cls");
 		cout<<endl<<"     * * * * * //R E S U L T A D O S// * * * * * "<<endl<<endl;
+		cout<<endl<<"     Los polinomios a sumar son: "<<endl;
+		for(int i = 0; i< polinomiosPrint.size(); i++){
+			cout<<endl<<"     "<<i+1<<") "<<polinomiosPrint[i];
+		}
 		 cout<<endl<<"     El grado del polinomio sumado es: "<<grado;
 		 //Se llama a la funcion "resultado"
 		cout<<endl<<"     El polinomio sumado es: ";
