@@ -207,34 +207,17 @@ bool revisarIfInt(string polinomio){
 }
 
 bool validar_asteriscos(string polinomio){
-    int astrsc = 0;
-    size_t pos;
-    string sub;
-    for(char c: polinomio){
-        if(c == '+' || c== '-'){
-            pos = polinomio.find(c);
-            sub = polinomio.substr(0, pos);
-            polinomio = polinomio.substr(pos + 1);
-            for(char c: sub){
-                if(c == '*'){
-                    astrsc ++;
-                }
-            }
-            if (astrsc > 1){
-                cout<<"     No se permite ingresar mas de un '*' dentro de un mismo termino. Por favor vuelva a ingresar el polinomio."<<endl<<endl<<endl;
-                return true;
-            }
-            astrsc = 0;
+    int asteriscos = 0;
+    for(size_t i = 0; i < polinomio.length(); i++){
+        char c = polinomio[i];
+        if(c == '*' && asteriscos == 1){
+            cout << endl<<"No se permite ingresar mas de un '*' dentro de un mismo término. Por favor vuelva a ingresar el polinomio." << endl << endl << endl;
+            return true;
+        } else if(c == '*') {
+            asteriscos++;
+        } else if(c == '+' || c == '-') {
+            asteriscos = 0;
         }
-    }
-    for(char c: polinomio){
-        if(c == '*'){
-            astrsc ++;
-        }
-    }
-    if (astrsc > 1){
-        cout<<"     No se permite ingresar mas de un '*' dentro de un mismo termino. Por favor vuelva a ingresar el polinomio."<<endl<<endl<<endl;
-        return true;
     }
     return false;
 }
