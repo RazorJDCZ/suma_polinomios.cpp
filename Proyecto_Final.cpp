@@ -326,72 +326,104 @@ void aumenta_uno(string& polinomio) {
 
 int main(){
 	
- int n;
+ int n, opcion;
 string n_input;
 vector<string>pol_cs; //pol_cs =  vector de polinomios con signo
-cout<<endl<<"     * * * * * SUMA DE POLINOMIOS * * * * * "<<endl<<endl;
-	
-while(true){
-	cout<<"Ingresa la cantidad de polinomios a sumar: ";
-	cin>>n_input;
-	cin.ignore();
-	if (revisarIfInt(n_input) == false){
-		cout << endl << "     Valor no permitido. Usa un valor entero igual o mayor a 2" << endl << endl;
-		continue;
-	}
-	else if(stoi(n_input) < 2){
-		cout << endl << "     Valor no permitido. Usa un valor entero igual o mayor a 2" << endl << endl;
-		continue;
-	}
-	else{
-		n = stoi(n_input);
+do{
+
+        cout<<endl<<endl<<"     * Escoja una de las siguientes opciones *: "<<endl<<endl;
+        cout<<"     1. Sumar polinomios "<<endl;
+        cout<<"     2. Salir "<<endl<<endl;
+        cout<<"     Opcion: ";
+        cin>> opcion;
+        
+        if (opcion == 1){
+        	system("cls");
+		}
+
+        switch (opcion){
+            case 1:{
+		while(true){
+			cout<<endl<<"     * * * * * SUMA DE POLINOMIOS * * * * * "<<endl<<endl;
+			cout<<"Ingresa la cantidad de polinomios a sumar: ";
+			cin>>n_input;
+			cin.ignore();
+			if (revisarIfInt(n_input) == false){
+				system("cls");
+				cout << endl << "     Valor no permitido. Usa un valor entero igual o mayor a 2" << endl << endl;
+				continue;
+			}
+			else if(stoi(n_input) < 2){
+				system("cls");
+				cout << endl << "     Valor no permitido. Usa un valor entero igual o mayor a 2" << endl << endl;
+				continue;
+			}
+			else{
+				n = stoi(n_input);
+				break;
+			}
+		}
+
+		vector<string>polinomios;
+		string polinomio, polinomio_sin_es;
+		for(int i=0; i<n; i++){
+			do{
+			cout<<"     Ingresa el polinomio "<<i+1<<" : ";
+			getline(cin, polinomio);
+			aumenta_uno (polinomio);
+			}
+			//Se revisa si hay signos seguidos, caracteres alpha numericos o la variable es x
+			while( revisarNumVariables(polinomio) or revisarSignosSeguidos(polinomio) or revisarAlphaNum(polinomio) or revisarEspacios(polinomio) or revisarNumerosDespuesDeAsterisco(polinomio) or validar_asteriscos(polinomio));
+		//se llama a la funcion que quita los espacios a la cadena "polinomio"
+		polinomio_sin_es = limpiar_espacios(polinomio);
+		polinomios.push_back(polinomio_sin_es);
+		}
+
+		//se llama a la funcion "polinomio_con_signo"
+		for(string polinomio : polinomios){
+			string polinomio_csp = polinomio_con_signo(polinomio); //polinomio_csp = polinomio con signo  
+			pol_cs.push_back(polinomio_csp);
+		}
+
+		//se llama a la funcion "separar_terminos" (para vectores)
+		vector<string> terminos = separar_terminos(pol_cs);
+
+		//se llama a la funcion "elimina_termino" que revisa si hay un 0*x y lo elimina del programa
+		elimina_termino(terminos);
+
+		//se llama a la funcion "ordena_exponentes_y_coeficientes"
+		vector<vector<double>>coeficientes = ordena_exponentes_y_coeficientes(terminos);
+
+		//se llama a la funcion "suma_coeficientes"
+		vector<vector<double>> vec_coefi_sumados = suma_coeficientes(coeficientes);
+
+		//se define al grado del polinomio
+		 double grado = coeficientes[0][0];
+
+		system("cls");
+		cout<<endl<<"     * * * * * //R E S U L T A D O S// * * * * * "<<endl<<endl;
+		 cout<<endl<<"     El grado del polinomio sumado es: "<<grado;
+		 //Se llama a la funcion "resultado"
+		cout<<endl<<"     El polinomio sumado es: ";
+		resultado(vec_coefi_sumados);
+		 break;
+	    }
+            case 2:{
+            	system("cls");
+            	cout<<endl<<endl<<"     El programa ha terminado :) "<<endl;
+                break;
+            }
+
+            default:{
+                cout<<endl<<endl<<"     La opcion que escogiste esta fuera de rango. Por favor escoge una nueva";
 		break;
+	    }
 	}
-	}
-  
-vector<string>polinomios;
-string polinomio, polinomio_sin_es;
-for(int i=0; i<n; i++){
-    	do{
-        cout<<"     Ingresa el polinomio "<<i+1<<" : ";
-        getline(cin, polinomio);
-	aumenta_uno (polinomio);
-    	}
-	//Se revisa si hay signos seguidos, caracteres alpha numericos o la variable es x
-	while( revisarNumVariables(polinomio) or revisarSignosSeguidos(polinomio) or revisarAlphaNum(polinomio) or revisarEspacios(polinomio) or revisarNumerosDespuesDeAsterisco(polinomio) or validar_asteriscos(polinomio));
-//se llama a la funcion que quita los espacios a la cadena "polinomio"
-polinomio_sin_es = limpiar_espacios(polinomio);
-polinomios.push_back(polinomio_sin_es);
+	
+	}while (opcion != 2);
+    
+    return 0;
 }
 	
-//se llama a la funcion "polinomio_con_signo"
-for(string polinomio : polinomios){
-	string polinomio_csp = polinomio_con_signo(polinomio); //polinomio_csp = polinomio con signo  
-	pol_cs.push_back(polinomio_csp);
-}
 
-//se llama a la funcion "separar_terminos" (para vectores)
-vector<string> terminos = separar_terminos(pol_cs);
-	
-//se llama a la funcion "elimina_termino" que revisa si hay un 0*x y lo elimina del programa
-elimina_termino(terminos);
-
-//se llama a la funcion "ordena_exponentes_y_coeficientes"
-vector<vector<double>>coeficientes = ordena_exponentes_y_coeficientes(terminos);
-
-//se llama a la funcion "suma_coeficientes"
-vector<vector<double>> vec_coefi_sumados = suma_coeficientes(coeficientes);
-
-//se define al grado del polinomio
- double grado = coeficientes[0][0];
-	
-system("cls");
-cout<<endl<<"     * * * * * //R E S U L T A D O S// * * * * * "<<endl<<endl;
- cout<<endl<<"     El grado del polinomio sumado es: "<<grado;
- //Se llama a la funcion "resultado"
-cout<<endl<<"     El polinomio sumado es: ";
-resultado(vec_coefi_sumados);
-	
-	return 0;
-}
           
